@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/学生信息管理.css">
+</head>
+<body>
+	<div class="col-12">
+		<img class="header" src="images/首页/top_background.png" alt="图像加载失败">
+		<div class="welcome"><span>欢迎您！</span></div>
+		<div class="logout"><a href="index.html"><span>注销<span></a></div>
+	</div>
+	<div class="col-12 middle">
+		<div class="list col-2">
+			<ul class="innerlist">
+				<li><a href="首页.html">首页</a></li>
+				<li><a href="学生信息管理.html">学生信息管理</a></li>
+				<li><a href="集团管理.html">集团管理</a></li>
+				<li><a href="供应商管理.html">供应商管理</a></li>
+				<li><a href="缴费项目管理.html">缴费项目管理</a></li>
+				<li><a href="缴费订单管理.html">缴费订单管理</a></li>
+				<li><a href="缴费记录管理.html">缴费记录管理</a></li>
+				<li><a href="供货管理.html">供货管理</a></li>
+				<li><a href="清算统计.html">清算统计</a></li>
+			</ul>
+		</div>
+		<div class="col-8 right-side">
+			
+			<form  name="file-form" method="post" enctype="multipart/form-data" class="file-upload">
+				<span>批量导入缴费项目</span>
+				<input type="file" id="upload" name="upload">
+				<input type="submit" value="确定导入">
+			</form>
+			
+			<form name="find-student-information" class="inquire-student-information">
+				<span>查询缴费项目</span>
+				<table>
+					<tr>
+						<td>
+							项目编号
+							<input type="text" name="project-number">
+						</td>
+						<td>
+							项目名
+							<input type="text" name="project-name">
+						</td>
+						
+					</tr>
+					<tr>
+						<td>
+							供应商号
+						</td>
+						<td>
+							状态
+							<select name="institute">
+								<option value="all">全部</option>
+								<option value="onsale">上架</option>
+								<option value="offsale">下架</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<input type="submit" value="查询">
+			</form>
+			<table class="inquire-content">
+				<thead>
+					<tr>
+						<th>项目编号</th>
+						<th>项目名</th>
+						<th>单价</th>
+						<th>供应商号</th>
+						<th>状态</th>
+						<th>属性一</th>
+						<th>属性二</th>
+						<th>属性三</th>
+						<th>备注</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>内容</td>
+					</tr>
+				
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
