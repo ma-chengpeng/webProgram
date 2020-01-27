@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/学生信息管理.css">
+</head>
+<body>
+	<div class="col-12">
+		<img class="header" src="images/首页/top_background.png" alt="图像加载失败">
+		<div class="welcome"><span>欢迎您！</span></div>
+		<div class="logout"><a href="index.html"><span>注销<span></a></div>
+	</div>
+	<div class="col-12 middle">
+		<div class="list col-2">
+			<ul class="innerlist">
+				<li><a href="首页.html">首页</a></li>
+				<li><a href="#">学生信息管理</a></li>
+				<li><a href="集团管理.html">集团管理</a></li>
+				<li><a href="供应商管理.html">供应商管理</a></li>
+				<li><a href="缴费项目管理.html">缴费项目管理</a></li>
+				<li><a href="缴费订单管理.html">缴费订单管理</a></li>
+				<li><a href="缴费记录管理.html">缴费记录管理</a></li>
+				<li><a href="供货管理.html">供货管理</a></li>
+				<li><a href="清算统计.html">清算统计</a></li>
+			</ul>
+		</div>
+		<div class="col-8 right-side">
+			
+			<form  name="file-form" method="post" enctype="multipart/form-data" class="file-upload">
+				<span>批量导入学生信息</span>
+				<input type="file" id="upload" name="upload">
+				<input type="submit" value="确定导入">
+			</form>
+			
+			<form name="find-student-information" class="inquire-student-information">
+				<span>查询学生信息</span>
+				<table>
+					<tr>
+						<td>
+							学号
+							<input type="text" name="schoolnumber">
+						</td>
+						<td>
+							学校
+							<input type="text" name="school">
+						</td>
+						<td>
+							学院
+							<select name="institute">
+								<option value="computer science">计算机学院</option>
+								<option value="math">数学院</option>
+								<option value="law">王建法学院</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td>
+							专业
+							<select name="major">
+								<option value="computer science">计算机</option>
+								<option value="math">数学</option>
+								<option value="law">法学</option>
+							</select>
+						</td>
+						<td>
+							状态
+							<select name="statue">
+								<option value="study">在读</option>
+								<option value="out">离校</option>
+							</select>
+						</td>
+						<td>
+							学院
+							<select name="institute">
+								<option value="computer science">计算机学院</option>
+								<option value="math">数学院</option>
+								<option value="law">王建法学院</option>
+							</select>
+						</td>
+						<td>
+							年级
+							<select name="grade">
+								<option value="freshman">大一</option>
+								<option value="gradetwo">大二</option>
+								<option value="gradethree">大三</option>
+							</select>
+						</td>
+						<td>
+							性别
+							<select name="sex">
+								<option value="male">男</option>
+								<option value="female">女</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<input type="submit" value="查询">
+			</form>
+			<table class="inquire-content">
+				<thead>
+					<tr>
+						<th>学号</th>
+						<th>姓名</th>
+						<th>性别</th>
+						<th>学校</th>
+						<th>学院</th>
+						<th>专业</th>
+						<th>年纪</th>
+						<th>状态</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>内容</td>
+					</tr>
+				
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
