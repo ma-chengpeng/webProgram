@@ -9,6 +9,15 @@ app.use('/index',indexRouter);
 const studentInfoManager=require('./router/studentInfoManager.js');
 app.use('/studentInfoManager',studentInfoManager);
 
+const groupManager=require('./router/groupManager.js');
+app.use('/groupManager',groupManager);
+
+const supplierManager=require('./router/supplierManager.js');
+app.use('/supplierManager',supplierManager);
+
+const payProjectManager=require('./router/payProjectManager.js');
+app.use('/payProjectManager',payProjectManager);
+
 
 app.get('/',function(req,res){
     res.sendFile(__dirname + "/staticResource/html/index.html")
