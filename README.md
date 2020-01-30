@@ -13,7 +13,7 @@ nodejs的模块目录，通过npm install *<模块名>*  安装的模块**自动
 ```
 eg npm install mysql   //安装mysql模块
 ```  
-###router
+### router
 各种路由信息，每一个文件负责处理来自前端一个页面的所有请求get,post等  
 ```
 eg ./router/studentInfoManager.js处理来自学生信息管理的请求

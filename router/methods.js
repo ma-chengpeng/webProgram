@@ -134,6 +134,87 @@ module.exports={
     },
 
     sendResultForPayProjectManager: function(results,response){
-        response.send("hello payProjectManager");
+        var resultToHtml=
+        " <table class='"+"inquire-content"+"'>\
+        <thead>\
+            <tr>\
+            <th>项目编号</th>\
+            <th>项目名</th>\
+            <th>单价</th>\
+            <th>供应商号</th>\
+            <th>状态</th>\
+            <th>属性一</th>\
+            <th>属性二</th>\
+            <th>属性三</th>\
+            <th>备注</th>\
+            </tr>\
+        </thead>\
+        <tbody> \
+        ";
+        var Count=0;
+        var isGetInformation=false;
+        while(results[Count]!=undefined)
+        {   
+            isGetInformation=true;
+            resultToHtml+="<tr>";
+            resultToHtml+="<td>'"+ results[Count].product_id+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].product_name+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].product_unit_price+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].corp_id+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].product_status+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].attribute1+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].attribute2+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].attribute3+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].remark+"'</td>";
+            resultToHtml+="</tr>";
+            Count++;
+        }
+        resultToHtml+="</tbody>\
+                    </table>";
+        if(isGetInformation==false)
+        {
+            resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
+        }
+        response.send(resultToHtml);
+    },
+
+    sendResultForPayOrderManager: function(results,response){
+        var resultToHtml=
+        " <table class='"+"inquire-content"+"'>\
+        <thead>\
+            <tr>\
+            <th>订单号</th>\
+            <th>订单总额</th>\
+            <th>创建时间</th>\
+            <th>学号</th>\
+            <th>支付状态</th>\
+            <th>失败原因</th>\
+            </tr>\
+        </thead>\
+        <tbody> \
+        ";
+        var Count=0;
+        var isGetInformation=false;
+        while(results[Count]!=undefined)
+        {   
+            isGetInformation=true;
+            resultToHtml+="<tr>";
+            resultToHtml+="<td>'"+ results[Count].bill_id+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].bill_amount+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].create_time+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].stu_id+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].channel_id+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].bill_fail_reason+"'</td>";
+            Count++;
+        }
+        resultToHtml+="</tbody>\
+                    </table>";
+        if(isGetInformation==false)
+        {
+            resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
+        }
+        response.send(resultToHtml);
+    
     }
+    
 }

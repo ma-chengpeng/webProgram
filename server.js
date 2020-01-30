@@ -18,6 +18,9 @@ app.use('/supplierManager',supplierManager);
 const payProjectManager=require('./router/payProjectManager.js');
 app.use('/payProjectManager',payProjectManager);
 
+const payOrderManager=require('./router/payOrderManager.js');
+app.use('/payOrderManager',payOrderManager);
+
 
 app.get('/',function(req,res){
     res.sendFile(__dirname + "/staticResource/html/index.html")
