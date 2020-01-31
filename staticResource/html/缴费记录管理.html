@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="/staticResource/css/学生信息管理.css">
-	<script src="/staticResource/javascript/缴费项目管理.js"></script>
+	<script src="/staticResource/javascript/缴费记录管理.js"></script>
 </head>
 <body>
 	<div class="col-12">
@@ -28,37 +28,26 @@
 		</div>
 		<div class="col-8 right-side">
 			
-			<form  name="file-form" method="post" enctype="multipart/form-data" class="file-upload">
-				<span>批量导入缴费项目</span>
-				<input type="file" id="upload" name="upload">
-				<input type="submit" value="确定导入">
-			</form>
-			
 			<form name="find-student-information" class="inquire-student-information">
-				<span>查询缴费项目</span>
+				<span>查询学生信息</span>
 				<table>
 					<tr>
 						<td>
-							项目编号
-							<input type="text" id="projectNumber" name="projectNumber">
+							流水号
+							<input type="text" name="serialNumber" id="serialNumber">
 						</td>
 						<td>
-							项目名
-							<input type="text" id="projectName" name="projectName">
+							学号
+							<input type="text" name="studentNumber" id="studentNumber">
 						</td>
-						
 					</tr>
 					<tr>
 						<td>
-							供应商号
-							<input type="text" id="supplierNumber" name="supplierNumber">
-						</td>
-						<td>
-							状态
-							<select id="status">
+							支付状态
+							<select name="status" id="status">
 								<option value="all">全部</option>
-								<option value="onsale">上架</option>
-								<option value="offsale">下架</option>
+								<option value="payed">已缴费</option>
+								<option value="not-payed">未缴费</option>
 							</select>
 						</td>
 					</tr>
@@ -69,15 +58,12 @@
 			<table class="inquire-content" id="queryResult">
 				<thead>
 					<tr>
-						<th>项目编号</th>
-						<th>项目名</th>
-						<th>单价</th>
-						<th>供应商号</th>
-						<th>状态</th>
-						<th>属性一</th>
-						<th>属性二</th>
-						<th>属性三</th>
-						<th>备注</th>
+						<th>流水号</th>
+						<th>支付渠道</th>
+						<th>学号</th>
+						<th>支付状态</th>
+						<th>总额</th>
+						<th>订单号</th>
 					</tr>
 				</thead>
 				<tbody>

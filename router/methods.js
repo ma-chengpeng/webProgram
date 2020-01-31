@@ -215,6 +215,124 @@ module.exports={
         }
         response.send(resultToHtml);
     
+    },
+
+    sendResultForPayRecordManager: function(results,response){
+        var resultToHtml=
+        " <table class='"+"inquire-content"+"'>\
+        <thead>\
+            <tr>\
+            <th>流水号</th>\
+            <th>支付渠道</th>\
+            <th>学号</th>\
+            <th>支付状态</th>\
+            <th>总额</th>\
+            <th>订单号</th>\
+            </tr>\
+        </thead>\
+        <tbody> \
+        ";
+        var Count=0;
+        var isGetInformation=false;
+        while(results[Count]!=undefined)
+        {   
+            isGetInformation=true;
+            resultToHtml+="<tr>";
+            resultToHtml+="<td>'"+ results[Count].sequence_num+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].channel_id+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].stu_id+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].pay_status+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].bill_amount+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].bill_id+"'</td>";
+            Count++;
+        }
+        resultToHtml+="</tbody>\
+                    </table>";
+        if(isGetInformation==false)
+        {
+            resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
+        }
+        response.send(resultToHtml);
+    },
+
+    sendResultForGoodsManager: function(results,response){
+        var resultToHtml=
+        " <table class='"+"inquire-content"+"'>\
+        <thead>\
+            <tr>\
+            <th>供货号</th>\
+            <th>供货总额</th>\
+            <th>供应商号</th>\
+            <th>供应商名</th>\
+            <th>集团号</th>\
+            </tr>\
+        </thead>\
+        <tbody> \
+        ";
+        var Count=0;
+        var isGetInformation=false;
+        while(results[Count]!=undefined)
+        {   
+            isGetInformation=true;
+            resultToHtml+="<tr>";
+            resultToHtml+="<td>'"+ results[Count].stock_id+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].stock_amount+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].corp_id+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].corp_name+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].group_id+"'</td>";
+            Count++;
+        }
+        resultToHtml+="</tbody>\
+                    </table>";
+        if(isGetInformation==false)
+        {
+            resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
+        }
+        response.send(resultToHtml);
+    },
+
+    sendResultForClearManager: function(results,response){
+        var resultToHtml=
+        " <table class='"+"inquire-content"+"'>\
+        <thead>\
+            <tr>\
+            <th>清算号</th>\
+            <th>供货号</th>\
+            <th>定金总额</th>\
+            <th>定金状态</th>\
+            <th>尾款总额</th>\
+            <th>尾款状态</th>\
+            <th>定金支付时间</th>\
+            <th>尾款支付时间</th>\
+            </tr>\
+        </thead>\
+        <tbody> \
+        ";
+        var Count=0;
+        var isGetInformation=false;
+        while(results[Count]!=undefined)
+        {   
+            isGetInformation=true;
+            resultToHtml+="<tr>";
+            resultToHtml+="<td>'"+ results[Count].clear_id+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].stock_id+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].deposit_amount+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].deposit_status+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].remain_amount+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].remain_status+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].deposit_paytime+"'</td>";
+            resultToHtml+="<td>'"+ results[Count].remain_paytime+"'</td>";
+            Count++;
+        }
+        resultToHtml+="</tbody>\
+                    </table>";
+        if(isGetInformation==false)
+        {
+            resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
+        }
+        response.send(resultToHtml);
     }
+
+    
     
 }

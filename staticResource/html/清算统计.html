@@ -3,26 +3,27 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/学生信息管理.css">
+	<link rel="stylesheet" type="text/css" href="/staticResource/css/学生信息管理.css">
+	<script src="/staticResource/javascript/清算统计.js"></script>
 </head>
 <body>
 	<div class="col-12">
-		<img class="header" src="images/首页/top_background.png" alt="图像加载失败">
+		<img class="header" src="/staticResource/images/首页/top_background.png" alt="图像加载失败">
 		<div class="welcome"><span>欢迎您！</span></div>
-		<div class="logout"><a href="index.html"><span>注销<span></a></div>
+		<div class="logout"><a href="/staticResource/html/index.html"><span>注销<span></a></div>
 	</div>
 	<div class="col-12 middle">
 		<div class="list col-2">
 			<ul class="innerlist">
-				<li><a href="首页.html">首页</a></li>
-				<li><a href="学生信息管理.html">学生信息管理</a></li>
-				<li><a href="集团管理.html">集团管理</a></li>
-				<li><a href="供应商管理.html">供应商管理</a></li>
-				<li><a href="缴费项目管理.html">缴费项目管理</a></li>
-				<li><a href="缴费订单管理.html">缴费订单管理</a></li>
-				<li><a href="缴费记录管理.html">缴费记录管理</a></li>
-				<li><a href="供货管理.html">供货管理</a></li>
-				<li><a href="清算统计.html">清算统计</a></li>
+				<li><a href="/staticResource/html/首页.html">首页</a></li>
+				<li><a href="/staticResource/html/学生信息管理.html">学生信息管理</a></li>
+				<li><a href="/staticResource/html/集团管理.html">集团管理</a></li>
+				<li><a href="/staticResource/html/供应商管理.html">供应商管理</a></li>
+				<li><a href="/staticResource/html/缴费项目管理.html">缴费项目管理</a></li>
+				<li><a href="/staticResource/html/缴费订单管理.html">缴费订单管理</a></li>
+				<li><a href="/staticResource/html/缴费记录管理.html">缴费记录管理</a></li>
+				<li><a href="/staticResource/html/供货管理.html">供货管理</a></li>
+				<li><a href="/staticResource/html/清算统计.html">清算统计</a></li>
 			</ul>
 		</div>
 		<div class="col-8 right-side">
@@ -39,15 +40,15 @@
 					<tr>
 						<td>
 							清算号
-							<input type="text" name="schoolnumber">
+							<input type="text" name="clearNumber" id="clearNumber">
 						</td>
 						<td>
 							供货号
-							<input type="text" name="school">
+							<input type="text" name="goodsNumber" id="goodsNumber">
 						</td>
 						<td>
 							定金状态
-							<select name="institute">
+							<select name="earnestStatus" id="earnestStatus">
 								<option value="all">全部</option>
 								<option value="payed">已支付</option>
 								<option value="unpayed">未支付</option>
@@ -59,7 +60,7 @@
 					<tr>
 						<td>
 							尾款状态
-							<select name="major">
+							<select name="finalPaymentStatus" id="finalPaymentStatus">
 								<option value="all">全部</option>
 								<option value="payed">已支付</option>
 								<option value="unpayed">未支付</option>
@@ -67,19 +68,20 @@
 						</td>
 						<td>
 							尾款支付时间
-							<input type="text" name="data-of-payment">
+							<input type="text"  id="finalPaymentData" name="finalPaymentData">
 						</td>
 						
 						<td>
 							定金支付时间
-							<input type="text" name="data-of-payment">
+							<input type="text" name="earnestData" id="earnestData">
 							
 						</td>
 					</tr>
 				</table>
-				<input type="submit" value="查询">
+				<button type="button" onclick="loadXMLDoc()">查询</button>
+				<button type="button">导出</button>
 			</form>
-			<table class="inquire-content">
+			<table class="inquire-content" id="queryResult">
 				<thead>
 					<tr>
 						<th>清算号</th>
