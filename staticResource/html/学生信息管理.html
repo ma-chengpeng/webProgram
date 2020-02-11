@@ -34,7 +34,7 @@
 				<input type="submit" value="确定导入">
 			</form>
 			
-			<form name="find-student-information" class="inquire-student-information">
+			<form name="find-student-information" action="/studentInfoManager/exportFiles" method="post" class="inquire-student-information">
 				<span>查询学生信息</span>
 				<table>
 					<tr>
@@ -94,7 +94,7 @@
 					</tr>
 				</table>
 				<button type="button" onclick="loadXMLDoc()">查询</button>
-				<button type="button">导出</button>
+				<input type="submit" value="导出">
 			</form>
 			<table id ="myDiv" class="inquire-content">
 				<thead>

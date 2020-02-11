@@ -19,7 +19,13 @@ router.post('/queryStudentInfo',urlEncodeParser,function(req,res){
 
     getStudentQueryResult(req.body,function(results){
         methods.sendResultForStudentInfoManager(results,res);
+        methods.saveResultAsxlsxForStudentInfoManager(results);
     });
+})
+
+router.post('/exportFiles',urlEncodeParser,function(req,res){
+    path=__dirname+"/exportFiles/";
+    res.sendFile(path+"user_info.xlsx");
 })
 
 router.post('/fileUpload', function (req, res) {

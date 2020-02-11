@@ -18,7 +18,7 @@ function loadXMLDoc()
 			document.getElementById("queryResult").innerHTML=xmlhttp.responseText;
 		}
 	}
-	xmlhttp.open("POST","/supplierManager//querySupplierInfo",true);
+	xmlhttp.open("POST","/supplierManager/querySupplierInfo",true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("supplierNumber="+document.getElementById("supplierNumber").value+
 				 "&supplierName="+document.getElementById("supplierName").value+

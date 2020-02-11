@@ -61,7 +61,6 @@ function queryStudentInfo(reqBody,callback)
 
     consistSqlString(reqBody);
   
-    console.log(sql_conditions);
     connection.query("SELECT * from user_info"+sql_conditions, function (error, results, fields) {
           if (error) throw error;
           callback(results);

@@ -1,3 +1,5 @@
+const xlsx = require('node-xlsx')
+const fs = require('fs')
 module.exports={
 
     sendResultForStudentInfoManager: function(results,response)
@@ -42,6 +44,37 @@ module.exports={
             resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
         }
         response.send(resultToHtml);
+    },//SEND
+
+    saveResultAsxlsxForStudentInfoManager:function(results){
+        title=[ "学号","大学","学生姓名","学院","专业","年级","性别","在读状态"]
+        data=[]
+        data.push(title);
+        var Count=0;
+        while(results[Count]!=undefined)
+        {   
+            item=[]
+            item.push(results[Count].stu_id);
+            item.push(results[Count].collage);
+            item.push(results[Count].stu_name);
+            item.push(results[Count].department);
+            item.push(results[Count].major);
+            item.push(results[Count].grade);
+            item.push(results[Count].gender);
+            item.push(results[Count].status);
+            data.push(item);
+            Count++;
+        }
+
+        let buffer = xlsx.build([
+            { name: "user_info", data: data }
+        ])
+     
+        fs.writeFile(__dirname + "/exportFiles/user_info.xlsx", buffer, function (err) {
+            if (err) throw err;
+            console.log('Write to excel has successed');
+        })
+
     },
     
     sendResultForGroupManager: function(results,response){
@@ -79,7 +112,71 @@ module.exports={
             resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
         }
         response.send(resultToHtml);
+    },//SEND
+
+    savaResultAsxlsxForSupplierManager:function(results){
+        title=[ "供应商号","供应商名称","银行账户","联系人","联系人电话","联系人邮箱","联系人备注","支付方式","可否退款","供应商类型","供应商地址","集团号"]
+        data=[]
+        data.push(title);
+        var Count=0;
+        while(results[Count]!=undefined)
+        {   
+            item=[]
+            item.push(results[Count].corp_id);
+            item.push(results[Count].corp_name);
+            item.push(results[Count].corp_bank_account);
+            item.push(results[Count].corp_account_contact1);
+            item.push(results[Count].corp_account_contact1_phone);
+            item.push(results[Count].corp_account_contact1_email);
+            item.push(results[Count].corp_account_contact1_remark);
+            item.push(results[Count].set_account_type);
+            item.push(results[Count].backable);
+            item.push(results[Count].corp_type);
+            item.push(results[Count].corp_address);
+            item.push(results[Count].group_id);
+
+            data.push(item);
+            Count++;
+        }
+
+        let buffer = xlsx.build([
+            { name: "user_info", data: data }
+        ])
+     
+        fs.writeFile(__dirname + "/exportFiles/corp_info.xlsx", buffer, function (err) {
+            if (err) throw err;
+            console.log('Write to excel has successed');
+        })
+
     },
+
+    saveResultAsxlsxForGroupManager:function(results){
+        title=[ "集团号","集团名","启用状态","备注"]
+        data=[]
+        data.push(title);
+        var Count=0;
+        while(results[Count]!=undefined)
+        {   
+            item=[]
+            item.push(results[Count].group_id);
+            item.push(results[Count].group_name);
+            item.push(results[Count].status);
+            item.push(results[Count].remark);
+            data.push(item);
+            Count++;
+        }
+
+        let buffer = xlsx.build([
+            { name: "group_info", data: data }
+        ])
+     
+        fs.writeFile(__dirname + "/exportFiles/group_info.xlsx", buffer, function (err) {
+            if (err) throw err;
+            console.log('Write to excel has successed');
+        })
+
+    },
+
 
     sendResultForSupplierManager:function(results,response){
         var resultToHtml=
