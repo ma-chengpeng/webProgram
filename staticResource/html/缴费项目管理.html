@@ -28,13 +28,13 @@
 		</div>
 		<div class="col-8 right-side">
 			
-			<form  name="file-form" method="post" enctype="multipart/form-data" class="file-upload">
-				<span>批量导入缴费项目</span>
-				<input type="file" id="upload" name="upload">
+			<form  name="file-form" action="/payProjectManager/fileUpload" method="post" enctype="multipart/form-data" class="file-upload">
+				<span>批量导入学生信息</span>
+				<input type="file" name="image" size="50" />
 				<input type="submit" value="确定导入">
 			</form>
 			
-			<form name="find-student-information" class="inquire-student-information">
+			<form name="find-student-information" action="/payProjectManager/exportFiles" method="post" class="inquire-student-information">
 				<span>查询缴费项目</span>
 				<table>
 					<tr>
@@ -64,7 +64,7 @@
 					</tr>
 				</table>
 				<button type="button" onclick="loadXMLDoc()">查询</button>
-				<button type="button">导出</button>
+				<input type="submit" value="导出">
 			</form>
 			<table class="inquire-content" id="queryResult">
 				<thead>

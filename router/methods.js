@@ -114,42 +114,6 @@ module.exports={
         response.send(resultToHtml);
     },//SEND
 
-    savaResultAsxlsxForSupplierManager:function(results){
-        title=[ "供应商号","供应商名称","银行账户","联系人","联系人电话","联系人邮箱","联系人备注","支付方式","可否退款","供应商类型","供应商地址","集团号"]
-        data=[]
-        data.push(title);
-        var Count=0;
-        while(results[Count]!=undefined)
-        {   
-            item=[]
-            item.push(results[Count].corp_id);
-            item.push(results[Count].corp_name);
-            item.push(results[Count].corp_bank_account);
-            item.push(results[Count].corp_account_contact1);
-            item.push(results[Count].corp_account_contact1_phone);
-            item.push(results[Count].corp_account_contact1_email);
-            item.push(results[Count].corp_account_contact1_remark);
-            item.push(results[Count].set_account_type);
-            item.push(results[Count].backable);
-            item.push(results[Count].corp_type);
-            item.push(results[Count].corp_address);
-            item.push(results[Count].group_id);
-
-            data.push(item);
-            Count++;
-        }
-
-        let buffer = xlsx.build([
-            { name: "user_info", data: data }
-        ])
-     
-        fs.writeFile(__dirname + "/exportFiles/corp_info.xlsx", buffer, function (err) {
-            if (err) throw err;
-            console.log('Write to excel has successed');
-        })
-
-    },
-
     saveResultAsxlsxForGroupManager:function(results){
         title=[ "集团号","集团名","启用状态","备注"]
         data=[]
@@ -176,7 +140,6 @@ module.exports={
         })
 
     },
-
 
     sendResultForSupplierManager:function(results,response){
         var resultToHtml=
@@ -228,6 +191,42 @@ module.exports={
             resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
         }
         response.send(resultToHtml);
+    },//SEND
+
+    savaResultAsxlsxForSupplierManager:function(results){
+        title=[ "供应商号","供应商名称","银行账户","联系人","联系人电话","联系人邮箱","联系人备注","支付方式","可否退款","供应商类型","供应商地址","集团号"]
+        data=[]
+        data.push(title);
+        var Count=0;
+        while(results[Count]!=undefined)
+        {   
+            item=[]
+            item.push(results[Count].corp_id);
+            item.push(results[Count].corp_name);
+            item.push(results[Count].corp_bank_account);
+            item.push(results[Count].corp_account_contact1);
+            item.push(results[Count].corp_account_contact1_phone);
+            item.push(results[Count].corp_account_contact1_email);
+            item.push(results[Count].corp_account_contact1_remark);
+            item.push(results[Count].set_account_type);
+            item.push(results[Count].backable);
+            item.push(results[Count].corp_type);
+            item.push(results[Count].corp_address);
+            item.push(results[Count].group_id);
+
+            data.push(item);
+            Count++;
+        }
+
+        let buffer = xlsx.build([
+            { name: "user_info", data: data }
+        ])
+     
+        fs.writeFile(__dirname + "/exportFiles/corp_info.xlsx", buffer, function (err) {
+            if (err) throw err;
+            console.log('Write to excel has successed');
+        })
+
     },
 
     sendResultForPayProjectManager: function(results,response){
@@ -273,6 +272,38 @@ module.exports={
             resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
         }
         response.send(resultToHtml);
+    },//SEND
+
+    savaResultAsxlsxForPayProjectManager:function(results){
+        title=[ "项目编号","项目名称","单价","供应商号","状态","属性一","属性二","属性三","备注"]
+        data=[]
+        data.push(title);
+        var Count=0;
+        while(results[Count]!=undefined)
+        {   
+            item=[]
+            item.push(results[Count].product_id);
+            item.push(results[Count].product_name);
+            item.push(results[Count].product_unit_price);
+            item.push(results[Count].corp_id);
+            item.push(results[Count].product_status);
+            item.push(results[Count].attribute1);
+            item.push(results[Count].attribute2);
+            item.push(results[Count].attribute3);
+            item.push(results[Count].remark);
+            data.push(item);
+            Count++;
+        }
+
+        let buffer = xlsx.build([
+            { name: "product_list", data: data }
+        ])
+     
+        fs.writeFile(__dirname + "/exportFiles/product_list.xlsx", buffer, function (err) {
+            if (err) throw err;
+            console.log('Write to excel has successed');
+        })
+
     },
 
     sendResultForPayOrderManager: function(results,response){
@@ -312,6 +343,36 @@ module.exports={
         }
         response.send(resultToHtml);
     
+    },//SEND
+
+    savaResultAsxlsxForPayOrderManager:function(results){
+        title=[ "订单号","订单总额","创建时间","学号","支付状态","失败原因"]
+        data=[]
+        data.push(title);
+        var Count=0;
+        while(results[Count]!=undefined)
+        {   
+            item=[]
+            item.push(results[Count].bill_id);
+            item.push(results[Count].bill_amount);
+            item.push(results[Count].creat_time);
+            item.push(results[Count].stu_id);
+            item.push(results[Count].pay_status);
+            item.push(results[Count].bill_fail_reason);
+            item.push(results[Count].channel_id);
+            data.push(item);
+            Count++;
+        }
+
+        let buffer = xlsx.build([
+            { name: "bill_info", data: data }
+        ])
+     
+        fs.writeFile(__dirname + "/exportFiles/bill_info.xlsx", buffer, function (err) {
+            if (err) throw err;
+            console.log('Write to excel has successed');
+        })
+
     },
 
     sendResultForPayRecordManager: function(results,response){
