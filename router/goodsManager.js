@@ -1,5 +1,6 @@
 const express = require('express');
 const getGoodsQueryResult=require('../db/model/goodsInfo.js')
+const updateGoodsInfo=require("../db/updateModel/goodsInfo.js")
 
 const bodyParser = require('body-parser'); 
 var urlEncodeParser = bodyParser.urlencoded({extended: false});
@@ -17,29 +18,40 @@ router.post('/queryGoodsInfo',urlEncodeParser,function(req,res){
 
     getGoodsQueryResult(req.body,function(results){
          methods.sendResultForGoodsManager(results,res);
+         methods.savaResultAsxlsxForGoodsManager(results);
     });
 })
 
 router.post('/fileUpload', function (req, res) {
  
-    console.log(req.files[0]);  // 上传的文件信息
-  
-    var des_file = __dirname + "/" + req.files[0].originalname;
+    var des_file = __dirname + "/uploadFiles/" + req.files[0].originalname;
+    
     fs.readFile( req.files[0].path, function (err, data) {
          fs.writeFile(des_file, data, function (err) {
           if( err ){
                console.log( err );
           }else{
-                response = {
-                    message:'File uploaded successfully', 
-                    filename:req.files[0].originalname
-               };
+
+               res.send("上传成功");
+               
+               updateGoodsInfo(des_file);
+    
+               fs.unlink(des_file, function(err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    console.log("文件删除成功！");
+                });
            }
-           console.log( response );
-           res.send( JSON.stringify( response ) );
+
         });
     });
- })
+})
+
+router.post('/exportFiles',urlEncodeParser,function(req,res){
+    path=__dirname+"/exportFiles/";
+    res.sendFile(path+"stock_list.xlsx");
+})
 
 
 module.exports = router;

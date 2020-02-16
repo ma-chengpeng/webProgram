@@ -411,7 +411,7 @@ module.exports={
             resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
         }
         response.send(resultToHtml);
-    },
+    },//SEND
 
     sendResultForGoodsManager: function(results,response){
         var resultToHtml=
@@ -447,6 +447,34 @@ module.exports={
             resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
         }
         response.send(resultToHtml);
+    },//SEND
+
+    savaResultAsxlsxForGoodsManager:function(results){
+        title=[ "供货号","供货总额","供货商号","供应商名","集团号"]
+        data=[]
+        data.push(title);
+        var Count=0;
+        while(results[Count]!=undefined)
+        {   
+            item=[]
+            item.push(results[Count].stock_id);
+            item.push(results[Count].stock_amount);
+            item.push(results[Count].corp_id);
+            item.push(results[Count].corp_name);
+            item.push(results[Count].group_id);
+            data.push(item);
+            Count++;
+        }
+
+        let buffer = xlsx.build([
+            { name: "stock_list", data: data }
+        ])
+     
+        fs.writeFile(__dirname + "/exportFiles/stock_list.xlsx", buffer, function (err) {
+            if (err) throw err;
+            console.log('Write to excel has successed');
+        })
+
     },
 
     sendResultForClearManager: function(results,response){
@@ -489,7 +517,40 @@ module.exports={
             resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
         }
         response.send(resultToHtml);
+    },//SEND
+
+    savaResultAsxlsxForClearManager:function(results){
+        title=[ "清算号","供货号","定金总额","定金状态","尾款状态","定金支付时间","尾款支付时间"]
+        data=[]
+        data.push(title);
+        var Count=0;
+        while(results[Count]!=undefined)
+        {   
+            item=[]
+            item.push(results[Count].clear_id);
+            item.push(results[Count].stock_id);
+            item.push(results[Count].deposit_amount);
+            item.push(results[Count].deposit_status);
+            item.push(results[Count].remain_amount);
+            item.push(results[Count].deposit_paytime);
+            item.push(results[Count].remain_paytime);
+
+            data.push(item);
+            Count++;
+        }
+
+        let buffer = xlsx.build([
+            { name: "clear_info", data: data }
+        ])
+     
+        fs.writeFile(__dirname + "/exportFiles/clear_info.xlsx", buffer, function (err) {
+            if (err) throw err;
+            console.log('Write to excel has successed');
+        })
+
     }
+
+    
 
     
     
