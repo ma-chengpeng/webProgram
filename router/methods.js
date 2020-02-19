@@ -26,14 +26,14 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>'"+ results[Count].stu_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].collage+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].stu_name+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].department+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].major+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].grade+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].gender+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].status+"'</td>";
+            resultToHtml+="<td>"+ results[Count].stu_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].collage+"</td>";
+            resultToHtml+="<td>"+ results[Count].stu_name+"</td>";
+            resultToHtml+="<td>"+ results[Count].department+"</td>";
+            resultToHtml+="<td>"+ results[Count].major+"</td>";
+            resultToHtml+="<td>"+ results[Count].grade+"</td>";
+            resultToHtml+="<td>"+ results[Count].gender+"</td>";
+            resultToHtml+="<td>"+ results[Count].status+"</td>";
             resultToHtml+="</tr>";
             Count++;
         }
@@ -412,6 +412,35 @@ module.exports={
         }
         response.send(resultToHtml);
     },//SEND
+
+    savaResultAsxlsxForPayRecordManager:function(results){
+        title=[ "流水号","支付渠道","学号","支付状态","总额","订单号"]
+        data=[]
+        data.push(title);
+        var Count=0;
+        while(results[Count]!=undefined)
+        {   
+            item=[]
+            item.push(results[Count].sequence_num);
+            item.push(results[Count].channel_id);
+            item.push(results[Count].stu_id);
+            item.push(results[Count].pay_status);
+            item.push(results[Count].bill_amount);
+            item.push(results[Count].bill_id);
+            data.push(item);
+            Count++;
+        }
+
+        let buffer = xlsx.build([
+            { name: "all_pay_list", data: data }
+        ])
+     
+        fs.writeFile(__dirname + "/exportFiles/all_pay_list.xlsx", buffer, function (err) {
+            if (err) throw err;
+            console.log('Write to excel has successed');
+        })
+
+    },
 
     sendResultForGoodsManager: function(results,response){
         var resultToHtml=

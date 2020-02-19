@@ -1,6 +1,8 @@
 const express = require('express');
 const  getPayRecordQueryResult=require('../db/model/payRecordInfo.js')
 
+const updatePayRecordInfo=require("../db/updateModel/payRecordInfo.js")
+
 const bodyParser = require('body-parser'); 
 var urlEncodeParser = bodyParser.urlencoded({extended: false});
 
@@ -16,31 +18,42 @@ const methods=require("./methods.js");
 router.post('/queryPayRecordInfo',urlEncodeParser,function(req,res){
     
      getPayRecordQueryResult(req.body,function(results){
-           console.log(results);
            methods.sendResultForPayRecordManager(results,res);
+           methods.savaResultAsxlsxForPayRecordManager(results);
      });
 })
 
 router.post('/fileUpload', function (req, res) {
  
-    console.log(req.files[0]);  // 上传的文件信息
-  
-    var des_file = __dirname + "/" + req.files[0].originalname;
-    fs.readFile( req.files[0].path, function (err, data) {
-         fs.writeFile(des_file, data, function (err) {
-          if( err ){
-               console.log( err );
-          }else{
-                response = {
-                    message:'File uploaded successfully', 
-                    filename:req.files[0].originalname
-               };
-           }
-           console.log( response );
-           res.send( JSON.stringify( response ) );
-        });
-    });
- })
+    
+     var des_file = __dirname + "/uploadFiles/" + req.files[0].originalname;
+    
+     fs.readFile( req.files[0].path, function (err, data) {
+          fs.writeFile(des_file, data, function (err) {
+           if( err ){
+                console.log( err );
+           }else{
+ 
+                res.send("上传成功");
+                
+                updatePayRecordInfo(des_file);
+     
+                fs.unlink(des_file, function(err) {
+                     if (err) {
+                         console.log(err);
+                     }
+                     console.log("文件删除成功！");
+                 });
+            }
+ 
+         });
+     });
+})
+
+router.post('/exportFiles',function(req,res){
+     path=__dirname+"/exportFiles/";
+     res.sendFile(path+"all_pay_list.xlsx");
+})
 
 
 module.exports = router;

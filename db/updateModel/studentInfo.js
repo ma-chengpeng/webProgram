@@ -15,12 +15,6 @@ function updateUserInfo(file){
         status     =userInfo[i][7]
         password   =userInfo[i][8]
 
-        if (gender=="男"){
-            gender=1;
-        }
-        else{
-            gender=0;
-        }
 
         var  addSql = 'INSERT INTO user_info(stu_id,collage,stu_name,department,major,gender,grade,status,password) VALUES(?,?,?,?,?,?,?,?,?) \
         ON DUPLICATE KEY UPDATE collage=?,stu_name=?,department=?,major=?,gender=?,grade=?,status=?,password=?';

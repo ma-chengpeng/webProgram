@@ -37,7 +37,7 @@ function consistSqlString(reqBody)
           addSqlString("major",reqBody.Major);
       }
 
-      if(false)
+      if(reqBody.Status!="")
       {
           addSqlString("status",reqBody.Status);
       }
@@ -47,9 +47,9 @@ function consistSqlString(reqBody)
           addSqlString("grade",reqBody.Grade);
       }
 
-      if(false)
+      if(reqBody.Sex!="")
       {
-          out.println("sex为空");
+        addSqlString("gender",reqBody.Sex);
       }
 }
 
@@ -60,6 +60,8 @@ function queryStudentInfo(reqBody,callback)
     WHERE_OR_AND=" and ";
 
     consistSqlString(reqBody);
+
+
   
     connection.query("SELECT * from user_info"+sql_conditions, function (error, results, fields) {
           if (error) throw error;

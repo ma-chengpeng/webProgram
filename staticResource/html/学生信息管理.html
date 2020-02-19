@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="/staticResource/css/学生信息管理.css">
 	<script src="/staticResource/javascript/学生信息管理.js"></script>
+
 </head>
 <body>
 	<div class="col-12">
@@ -49,10 +50,10 @@
 						<td>
 							学院
 							<select id="Department" name="Department">
-								<option value="Computer Department">计算机学院</option>
-								<option value="Math Department">数学院</option>
-								<option value="Law Department">王建法学院</option>
 								<option value="">空白</option>
+								<option value="计算机科学与技术学院">计算机科学与技术学院</option>
+								<option value="数学科学学院">数学科学学院</option>
+								
 							</select>
 						</td>
 					</tr>
@@ -62,33 +63,40 @@
 						<td>
 							专业
 							<select id="Major" name="Major">
-								<option value="computer">计算机</option>
-								<option value="math">数学</option>
-								<option value="law">法学</option>
 								<option value="">空白</option>
+								<option value="数学与应用数学（基地）">数学与应用数学（基地）</option>
+								<option value="信息与计算科学">信息与计算科学</option>
+								<option value="数学与应用数学（师范）">数学与应用数学（师范）</option>
+								<option value="统计学">统计学</option>
+								<option value="金融数学">金融数学</option>
+								<option value="物联网">物联网</option>
+								<option value="计算机科学与技术">计算机科学与技术</option>
+								<option value="人工智能">人工智能</option>
+								<option value="网络空间与安全">网络空间与安全</option>
+								<option value="信息管理">信息管理</option>
 							</select>
 						</td>
 						<td>
 							在读状态
 							<select id ="Status" name="Status">
-								<option value="study">在读</option>
-								<option value="out">离校</option>
+								<option value=1>在读</option>
+								<option value=0>离校</option>
 							</select>
 						</td>
 						<td>
 							年级
 							<select id="Grade" name="Grade">
-								<option value="Bachelor_1">大一</option>
-								<option value="Bachelor_2">大二</option>
-								<option value="Bachelor_3">大三</option>
 								<option value="">空白</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
 							</select>
 						</td>
 						<td>
 							性别
 							<select id="Sex" name="Sex">
-								<option value="male">男</option>
-								<option value="female">女</option>
+								<option value="男">男</option>
+								<option value="女">女</option>
 							</select>
 						</td>
 					</tr>
