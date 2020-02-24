@@ -301,9 +301,9 @@ CREATE TABLE `user_info` (
   `stu_name` varchar(20) NOT NULL,
   `department` varchar(20) NOT NULL,
   `major` varchar(30) NOT NULL,
-  `gender` int(1) NOT NULL COMMENT '0:男 1：女',
+  `gender` varchar(20) NOT NULL,
   `grade` varchar(20) NOT NULL,
-  `status` int(1) NOT NULL COMMENT '0:不在读 1:在读',
+  `status` varchar(20) NOT NULL,
   `password` varchar(20),
   PRIMARY KEY (`stu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
@@ -315,7 +315,7 @@ CREATE TABLE `user_info` (
 
 LOCK TABLES `user_info` WRITE;
 /*!40000 ALTER TABLE `user_info` DISABLE KEYS */;
-INSERT INTO `user_info` VALUES (12345678,'Soochow University','ZhaoCheng','Math department','Information and compute science',1,'Grade Three',1,'ce888suo'),(1627405161,'Soochow University','MaChengpeng','Computer science department','Computerscience',1,'Grade Three',1,'ce888suo');
+INSERT INTO `user_info` VALUES (12345678,'苏州大学','zhaocheng','Math department','Information and compute science','女','Grade Three','在读','ce888suo');
 /*!40000 ALTER TABLE `user_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

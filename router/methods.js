@@ -97,11 +97,11 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>'"+ results[Count].group_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].group_name+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].status+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].remark+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].status+"'</td>";
+            resultToHtml+="<td>"+ results[Count].group_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].group_name+"</td>";
+            resultToHtml+="<td>"+ results[Count].status+"</td>";
+            resultToHtml+="<td>"+ results[Count].remark+"</td>";
+            resultToHtml+="<td>"+ results[Count].status+"</td>";
             resultToHtml+="</tr>";
             Count++;
         }
@@ -168,19 +168,19 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>'"+ results[Count].corp_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].corp_name+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].corp_bank_account+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].corp_account_contact1+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].corp_account_contact1_phone+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].corp_account_contact1_email+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].corp_account_contact1_remark+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].set_account_type+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].backable+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].corp_type+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].corp_address+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].group_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].status+"'</td>";
+            resultToHtml+="<td>"+ results[Count].corp_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].corp_name+"</td>";
+            resultToHtml+="<td>"+ results[Count].corp_bank_account+"</td>";
+            resultToHtml+="<td>"+ results[Count].corp_account_contact1+"</td>";
+            resultToHtml+="<td>"+ results[Count].corp_account_contact1_phone+"</td>";
+            resultToHtml+="<td>"+ results[Count].corp_account_contact1_email+"</td>";
+            resultToHtml+="<td>"+ results[Count].corp_account_contact1_remark+"</td>";
+            resultToHtml+="<td>"+ results[Count].set_account_type+"</td>";
+            resultToHtml+="<td>"+ results[Count].backable+"</td>";
+            resultToHtml+="<td>"+ results[Count].corp_type+"</td>";
+            resultToHtml+="<td>"+ results[Count].corp_address+"</td>";
+            resultToHtml+="<td>"+ results[Count].group_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].status+"</td>";
             resultToHtml+="</tr>";
             Count++;
         }
@@ -253,15 +253,15 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>'"+ results[Count].product_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].product_name+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].product_unit_price+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].corp_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].product_status+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].attribute1+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].attribute2+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].attribute3+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].remark+"'</td>";
+            resultToHtml+="<td>"+ results[Count].product_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].product_name+"</td>";
+            resultToHtml+="<td>"+ results[Count].product_unit_price+"</td>";
+            resultToHtml+="<td>"+ results[Count].corp_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].product_status+"</td>";
+            resultToHtml+="<td>"+ results[Count].attribute1+"</td>";
+            resultToHtml+="<td>"+ results[Count].attribute2+"</td>";
+            resultToHtml+="<td>"+ results[Count].attribute3+"</td>";
+            resultToHtml+="<td>"+ results[Count].remark+"</td>";
             resultToHtml+="</tr>";
             Count++;
         }
@@ -316,6 +316,7 @@ module.exports={
             <th>创建时间</th>\
             <th>学号</th>\
             <th>支付状态</th>\
+            <th>支付渠道</th>\
             <th>失败原因</th>\
             </tr>\
         </thead>\
@@ -327,12 +328,13 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>'"+ results[Count].bill_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].bill_amount+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].create_time+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].stu_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].channel_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].bill_fail_reason+"'</td>";
+            resultToHtml+="<td>"+ results[Count].bill_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].bill_amount+"</td>";
+            resultToHtml+="<td>"+ results[Count].creat_time+"</td>";
+            resultToHtml+="<td>"+ results[Count].stu_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].pay_status+"</td>";
+            resultToHtml+="<td>"+ results[Count].channel_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].bill_fail_reason+"</td>";
             Count++;
         }
         resultToHtml+="</tbody>\
@@ -396,12 +398,12 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>'"+ results[Count].sequence_num+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].channel_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].stu_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].pay_status+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].bill_amount+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].bill_id+"'</td>";
+            resultToHtml+="<td>"+ results[Count].sequence_num+"</td>";
+            resultToHtml+="<td>"+ results[Count].channel_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].stu_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].pay_status+"</td>";
+            resultToHtml+="<td>"+ results[Count].bill_amount+"</td>";
+            resultToHtml+="<td>"+ results[Count].bill_id+"</td>";
             Count++;
         }
         resultToHtml+="</tbody>\
@@ -462,11 +464,11 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>'"+ results[Count].stock_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].stock_amount+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].corp_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].corp_name+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].group_id+"'</td>";
+            resultToHtml+="<td>"+ results[Count].stock_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].stock_amount+"</td>";
+            resultToHtml+="<td>"+ results[Count].corp_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].corp_name+"</td>";
+            resultToHtml+="<td>"+ results[Count].group_id+"</td>";
             Count++;
         }
         resultToHtml+="</tbody>\
@@ -529,14 +531,14 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>'"+ results[Count].clear_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].stock_id+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].deposit_amount+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].deposit_status+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].remain_amount+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].remain_status+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].deposit_paytime+"'</td>";
-            resultToHtml+="<td>'"+ results[Count].remain_paytime+"'</td>";
+            resultToHtml+="<td>"+ results[Count].clear_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].stock_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].deposit_amount+"</td>";
+            resultToHtml+="<td>"+ results[Count].deposit_status+"</td>";
+            resultToHtml+="<td>"+ results[Count].remain_amount+"</td>";
+            resultToHtml+="<td>"+ results[Count].remain_status+"</td>";
+            resultToHtml+="<td>"+ results[Count].deposit_paytime+"</td>";
+            resultToHtml+="<td>"+ results[Count].remain_paytime+"</td>";
             Count++;
         }
         resultToHtml+="</tbody>\
