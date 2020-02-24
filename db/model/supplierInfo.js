@@ -31,6 +31,17 @@ function consistSqlString(reqBody)
       {
             addSqlString("corp_account_contact1",reqBody.contactName);
       }
+      
+      if (reqBody.supplierType!="")
+      {
+            addSqlString("corp_type",reqBody.supplierType)
+      }
+
+      if (reqBody.groupNumber!="")
+      {
+            addSqlString("group_id",reqBody.groupNumber)
+      }
+
 }
 
 function querySupplierInfo(reqBody,callback)
@@ -41,7 +52,6 @@ function querySupplierInfo(reqBody,callback)
 
     consistSqlString(reqBody);
   
-    console.log(sql_conditions);
     connection.query("SELECT * from corp_info"+sql_conditions, function (error, results, fields) {
           if (error) throw error;
           callback(results);

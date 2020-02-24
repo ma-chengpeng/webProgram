@@ -11,8 +11,8 @@ function updateClearInfo(file){
         depositStatus       =clearInfo[i][3]
         remainAmount        =clearInfo[i][4]
         remainStatus        =clearInfo[i][5]
-        depositPaytime      =clearInfo[i][6]
-        remainPaytime       =clearInfo[i][7]
+        depositPaytime      =new Date(1900,0,clearInfo[i][6])
+        remainPaytime       =new Date(1900,0,clearInfo[i][7])
       
 
          var  addSql = 'INSERT INTO clear_info(clear_id,stock_id,deposit_amount,deposit_status,remain_amount,remain_status,deposit_paytime,remain_paytime) VALUES(?,?,?,?,?,?,?,?) \

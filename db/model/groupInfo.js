@@ -26,6 +26,11 @@ function consistSqlString(reqBody)
       {
             addSqlString("group_name",reqBody.companyName);
       }
+
+      if (reqBody.status!="")
+      {
+            addSqlString("status",reqBody.status)
+      }
 }
 
 function queryGroupInfo(reqBody,callback)

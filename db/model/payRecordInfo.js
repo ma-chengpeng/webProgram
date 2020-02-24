@@ -26,6 +26,10 @@ function consistSqlString(reqBody)
       {
             addSqlString("stu_id",reqBody.studentNumber);
       }
+      if(reqBody.status!="")
+      {
+            addSqlString("pay_status",reqBody.status);
+      }
 }
 
 function queryPayRecordInfo(reqBody,callback)

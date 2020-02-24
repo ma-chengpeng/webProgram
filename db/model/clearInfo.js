@@ -27,15 +27,15 @@ function consistSqlString(reqBody)
             addSqlString("stock_id",reqBody.goodsNumber);
       }
 
-      // if(reqBody.earnestStatus!="")
-      // {
-      //       addSqlString("deposit_status",reqBody.earnestStatus);
-      // }
+      if(reqBody.earnestStatus!="")
+      {
+            addSqlString("deposit_status",reqBody.earnestStatus);
+      }
 
-      // if(reqBody.finalPaymentStatus!="")
-      // {
-      //       addSqlString("remain_status",reqBody.finalPaymentStatus);
-      // }
+      if(reqBody.finalPaymentStatus!="")
+      {
+            addSqlString("remain_status",reqBody.finalPaymentStatus);
+      }
 
       if(reqBody.finalPaymentData!="")
       {
@@ -45,10 +45,6 @@ function consistSqlString(reqBody)
       {
             addSqlString("deposit_paytime",reqBody.earnestData);
       }
-
-
-
-
 }
 
 function queryGoodsInfo(reqBody,callback)

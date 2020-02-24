@@ -31,6 +31,11 @@ function consistSqlString(reqBody)
       {
             addSqlString("corp_id",reqBody.supplierNumber);
       }
+
+      if(reqBody.status!="")
+      {
+            addSqlString("product_status",reqBody.status)
+      }
 }
 
 function queryPayProjectInfo(reqBody,callback)

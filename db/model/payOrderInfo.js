@@ -24,12 +24,16 @@ function consistSqlString(reqBody)
 
       if(reqBody.createData!="")
       {
-            addSqlString("create_time",reqBody.createData);
+            addSqlString("creat_time",reqBody.createData);
       }
 
       if(reqBody.studentNumber!="")
       {
             addSqlString("stu_id",reqBody.studentNumber);
+      }
+      if(reqBody.paymentStatus!="")
+      {
+            addSqlString("pay_status",reqBody.paymentStatus);
       }
 }
 
