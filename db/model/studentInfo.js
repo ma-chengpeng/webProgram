@@ -19,37 +19,37 @@ function consistSqlString(reqBody)
 {
       if(reqBody.StudentNumber!="")
       {
-            addSqlString("stu_id",reqBody.StudentNumber);
+            addSqlString("学号",reqBody.StudentNumber);
       }
 
       if(reqBody.StudentName!="")
       {
-            addSqlString("stu_name",reqBody.StudentName);
+            addSqlString("姓名",reqBody.StudentName);
       }
 
       if(reqBody.Department!="")
       {
-            addSqlString("department",reqBody.Department);
+            addSqlString("院系",reqBody.Department);
       }
 
       if(reqBody.Major!="")
       {
-          addSqlString("major",reqBody.Major);
+          addSqlString("专业",reqBody.Major);
       }
 
       if(reqBody.Status!="")
       {
-          addSqlString("status",reqBody.Status);
+          addSqlString("在读状态",reqBody.Status);
       }
 
       if(reqBody.Grade!="")
       {
-          addSqlString("grade",reqBody.Grade);
+          addSqlString("年级",reqBody.Grade);
       }
 
       if(reqBody.Sex!="")
       {
-        addSqlString("gender",reqBody.Sex);
+        addSqlString("性别",reqBody.Sex);
       }
 }
 
@@ -61,9 +61,7 @@ function queryStudentInfo(reqBody,callback)
 
     consistSqlString(reqBody);
 
-
-  
-    connection.query("SELECT * from user_info"+sql_conditions, function (error, results, fields) {
+    connection.query("SELECT * from 用户信息表"+sql_conditions, function (error, results, fields) {
           if (error) throw error;
           callback(results);
     });

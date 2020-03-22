@@ -3,6 +3,8 @@ const getGroupQueryResult=require('../db/model/groupInfo.js')
 
 const updateGroupInfo=require('../db/updateModel/groupInfo.js')
 
+const toggleStatus=require('../db/changeStatusModel/groupInfo.js')
+
 const bodyParser = require('body-parser'); 
 var urlEncodeParser = bodyParser.urlencoded({extended: false});
 
@@ -51,6 +53,13 @@ router.post('/fileUpload', function (req, res) {
 router.post('/exportFiles',function(req,res){
     path=__dirname+"/exportFiles/";
     res.sendFile(path+"group_info.xlsx");
+})
+
+router.post('/changeStatus',urlEncodeParser,function(req,res){
+    console.log(req.body.groupId);
+    toggleStatus(req.body.groupId,function(result){
+        res.send(result);
+    })
 })
 
 

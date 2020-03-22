@@ -19,17 +19,17 @@ function consistSqlString(reqBody)
 {
       if(reqBody.companyNumber!="")
       {
-            addSqlString("group_id",reqBody.companyNumber);
+            addSqlString("集团编号",reqBody.companyNumber);
       }
 
       if(reqBody.companyName!="")
       {
-            addSqlString("group_name",reqBody.companyName);
+            addSqlString("集团名称",reqBody.companyName);
       }
 
       if (reqBody.status!="")
       {
-            addSqlString("status",reqBody.status)
+            addSqlString("状态",reqBody.status)
       }
 }
 
@@ -42,7 +42,7 @@ function queryGroupInfo(reqBody,callback)
     consistSqlString(reqBody);
   
     console.log(sql_conditions);
-    connection.query("SELECT * from group_info"+sql_conditions, function (error, results, fields) {
+    connection.query("SELECT * from 商户集团信息表"+sql_conditions, function (error, results, fields) {
           if (error) throw error;
           callback(results);
     });

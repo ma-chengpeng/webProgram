@@ -20,6 +20,7 @@ router.post('/queryStudentInfo',urlEncodeParser,function(req,res){
     getStudentQueryResult(req.body,function(results){
         methods.sendResultForStudentInfoManager(results,res);
         methods.saveResultAsxlsxForStudentInfoManager(results);
+        //console.log(results);
     });
 })
 

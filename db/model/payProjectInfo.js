@@ -19,22 +19,22 @@ function consistSqlString(reqBody)
 {
       if(reqBody.projectNumber!="")
       {
-            addSqlString("product_id",reqBody.projectNumber);
+            addSqlString("商品编号",reqBody.projectNumber);
       }
 
       if(reqBody.projectName!="")
       {
-            addSqlString("product_name",reqBody.projectName);
+            addSqlString("商品名称",reqBody.projectName);
       }
 
       if(reqBody.supplierNumber!="")
       {
-            addSqlString("corp_id",reqBody.supplierNumber);
+            addSqlString("商户代码",reqBody.supplierNumber);
       }
 
       if(reqBody.status!="")
       {
-            addSqlString("product_status",reqBody.status)
+            addSqlString("商品状态",reqBody.status)
       }
 }
 
@@ -47,7 +47,7 @@ function queryPayProjectInfo(reqBody,callback)
     consistSqlString(reqBody);
   
     console.log(sql_conditions);
-    connection.query("SELECT * from product_list"+sql_conditions, function (error, results, fields) {
+    connection.query("SELECT * from 商品清单"+sql_conditions, function (error, results, fields) {
           if (error) throw error;
           callback(results);
     });

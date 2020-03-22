@@ -9,12 +9,12 @@ module.exports={
         <thead>\
             <tr>\
                 <th>学号</th>\
-                <th>大学</th>\
-                <th>学生姓名</th>\
-                <th>学院</th>\
+                <th>学校</th>\
+                <th>姓名</th>\
+                <th>院系</th>\
                 <th>专业</th>\
-                <th>年级</th>\
                 <th>性别</th>\
+                <th>年级</th>\
                 <th>在读状态</th>\
             </tr>\
         </thead>\
@@ -26,14 +26,14 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>"+ results[Count].stu_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].collage+"</td>";
-            resultToHtml+="<td>"+ results[Count].stu_name+"</td>";
-            resultToHtml+="<td>"+ results[Count].department+"</td>";
-            resultToHtml+="<td>"+ results[Count].major+"</td>";
-            resultToHtml+="<td>"+ results[Count].grade+"</td>";
-            resultToHtml+="<td>"+ results[Count].gender+"</td>";
-            resultToHtml+="<td>"+ results[Count].status+"</td>";
+            resultToHtml+="<td>"+ results[Count].学号+"</td>";
+            resultToHtml+="<td>"+ results[Count].学校+"</td>";
+            resultToHtml+="<td>"+ results[Count].姓名+"</td>";
+            resultToHtml+="<td>"+ results[Count].院系+"</td>";
+            resultToHtml+="<td>"+ results[Count].专业+"</td>";
+            resultToHtml+="<td>"+ results[Count].年级+"</td>";
+            resultToHtml+="<td>"+ results[Count].性别+"</td>";
+            resultToHtml+="<td>"+ results[Count].在读状态+"</td>";
             resultToHtml+="</tr>";
             Count++;
         }
@@ -47,21 +47,21 @@ module.exports={
     },//SEND
 
     saveResultAsxlsxForStudentInfoManager:function(results){
-        title=[ "学号","大学","学生姓名","学院","专业","年级","性别","在读状态"]
+        title=[ "学号","学校","姓名","院系","专业","性别","年级","在读状态"]
         data=[]
         data.push(title);
         var Count=0;
         while(results[Count]!=undefined)
         {   
             item=[]
-            item.push(results[Count].stu_id);
-            item.push(results[Count].collage);
-            item.push(results[Count].stu_name);
-            item.push(results[Count].department);
-            item.push(results[Count].major);
-            item.push(results[Count].grade);
-            item.push(results[Count].gender);
-            item.push(results[Count].status);
+            item.push(results[Count].学号);
+            item.push(results[Count].学校);
+            item.push(results[Count].姓名);
+            item.push(results[Count].院系);
+            item.push(results[Count].专业);
+            item.push(results[Count].性别);
+            item.push(results[Count].年级);
+            item.push(results[Count].在读状态);
             data.push(item);
             Count++;
         }
@@ -82,9 +82,9 @@ module.exports={
         " <table class='"+"inquire-content"+"'>\
         <thead>\
             <tr>\
-                <th>集团号</th>\
-                <th>集团名</th>\
-                <th>启用状态</th>\
+                <th>集团编号</th>\
+                <th>集团名称</th>\
+                <th>状态</th>\
                 <th>备注</th>\
                 <th>切换启用状态</th>\
             </tr>\
@@ -97,11 +97,11 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>"+ results[Count].group_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].group_name+"</td>";
-            resultToHtml+="<td>"+ results[Count].status+"</td>";
-            resultToHtml+="<td>"+ results[Count].remark+"</td>";
-            resultToHtml+="<td>"+ results[Count].status+"</td>";
+            resultToHtml+="<td>"+ results[Count].集团编号+"</td>";
+            resultToHtml+="<td>"+ results[Count].集团名称+"</td>";
+            resultToHtml+="<td id= '"+ results[Count].集团编号  +"' >"+ results[Count].状态+"</td>";
+            resultToHtml+="<td>"+ results[Count].备注+"</td>";
+            resultToHtml+="<td><button type= '"+ "button" +"' onclick= '"+ "changeStatus(this)" +"' value= '"+results[Count].集团编号+"' >切换</button></td>";
             resultToHtml+="</tr>";
             Count++;
         }
@@ -115,17 +115,17 @@ module.exports={
     },//SEND
 
     saveResultAsxlsxForGroupManager:function(results){
-        title=[ "集团号","集团名","启用状态","备注"]
+        title=[ "集团编号","集团名称","备注","状态"]
         data=[]
         data.push(title);
         var Count=0;
         while(results[Count]!=undefined)
         {   
             item=[]
-            item.push(results[Count].group_id);
-            item.push(results[Count].group_name);
-            item.push(results[Count].status);
-            item.push(results[Count].remark);
+            item.push(results[Count].集团编号);
+            item.push(results[Count].集团名称);
+            item.push(results[Count].备注);
+            item.push(results[Count].状态);
             data.push(item);
             Count++;
         }
@@ -158,6 +158,7 @@ module.exports={
             <th>供应商类型</th>\
             <th>供应商地址</th>\
             <th>集团号</th>\
+            <th>状态</th>\
             </tr>\
         </thead>\
         <tbody> \
@@ -168,19 +169,19 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>"+ results[Count].corp_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].corp_name+"</td>";
-            resultToHtml+="<td>"+ results[Count].corp_bank_account+"</td>";
-            resultToHtml+="<td>"+ results[Count].corp_account_contact1+"</td>";
-            resultToHtml+="<td>"+ results[Count].corp_account_contact1_phone+"</td>";
-            resultToHtml+="<td>"+ results[Count].corp_account_contact1_email+"</td>";
-            resultToHtml+="<td>"+ results[Count].corp_account_contact1_remark+"</td>";
-            resultToHtml+="<td>"+ results[Count].set_account_type+"</td>";
-            resultToHtml+="<td>"+ results[Count].backable+"</td>";
-            resultToHtml+="<td>"+ results[Count].corp_type+"</td>";
-            resultToHtml+="<td>"+ results[Count].corp_address+"</td>";
-            resultToHtml+="<td>"+ results[Count].group_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].status+"</td>";
+            resultToHtml+="<td>"+ results[Count].商户代码+"</td>";
+            resultToHtml+="<td>"+ results[Count].商户名称+"</td>";
+            resultToHtml+="<td>"+ results[Count].商户银行账号+"</td>";
+            resultToHtml+="<td>"+ results[Count].商户对账联系人1+"</td>";
+            resultToHtml+="<td>"+ results[Count].商户对账联系人1电话+"</td>";
+            resultToHtml+="<td>"+ results[Count].商户对账联系人1邮箱+"</td>";
+            resultToHtml+="<td>"+ results[Count].商户对账联系人1备注+"</td>";
+            resultToHtml+="<td>"+ results[Count].结算类型+"</td>";
+            resultToHtml+="<td>"+ results[Count].是否支持退货+"</td>";
+            resultToHtml+="<td>"+ results[Count].商户类型+"</td>";
+            resultToHtml+="<td>"+ results[Count].商户地址+"</td>";
+            resultToHtml+="<td>"+ results[Count].集团编号+"</td>";
+            resultToHtml+="<td>"+ results[Count].状态+"</td>";
             resultToHtml+="</tr>";
             Count++;
         }
@@ -194,32 +195,33 @@ module.exports={
     },//SEND
 
     savaResultAsxlsxForSupplierManager:function(results){
-        title=[ "供应商号","供应商名称","银行账户","联系人","联系人电话","联系人邮箱","联系人备注","支付方式","可否退款","供应商类型","供应商地址","集团号"]
+        title=[ "商户代码","商户名称","商户银行账号","商户对账联系人","联系人电话","联系人邮箱","联系人备注","结算类型","是否支持退货","商户类型","集团编号","商户地址","状态"]
         data=[]
         data.push(title);
         var Count=0;
         while(results[Count]!=undefined)
         {   
             item=[]
-            item.push(results[Count].corp_id);
-            item.push(results[Count].corp_name);
-            item.push(results[Count].corp_bank_account);
-            item.push(results[Count].corp_account_contact1);
-            item.push(results[Count].corp_account_contact1_phone);
-            item.push(results[Count].corp_account_contact1_email);
-            item.push(results[Count].corp_account_contact1_remark);
-            item.push(results[Count].set_account_type);
-            item.push(results[Count].backable);
-            item.push(results[Count].corp_type);
-            item.push(results[Count].corp_address);
-            item.push(results[Count].group_id);
+            item.push(results[Count].商户代码);
+            item.push(results[Count].商户名称);
+            item.push(results[Count].商户银行账号);
+            item.push(results[Count].商户对账联系人1);
+            item.push(results[Count].商户对账联系人1电话);
+            item.push(results[Count].商户对账联系人1邮箱);
+            item.push(results[Count].商户对账联系人1备注);
+            item.push(results[Count].结算类型);
+            item.push(results[Count].是否支持退货);
+            item.push(results[Count].商户类型);
+            item.push(results[Count].商户地址);
+            item.push(results[Count].集团编号);
+            item.push(results[Count].状态);
 
             data.push(item);
             Count++;
         }
 
         let buffer = xlsx.build([
-            { name: "user_info", data: data }
+            { name: "corp_info", data: data }
         ])
      
         fs.writeFile(__dirname + "/exportFiles/corp_info.xlsx", buffer, function (err) {
@@ -253,15 +255,15 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>"+ results[Count].product_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].product_name+"</td>";
-            resultToHtml+="<td>"+ results[Count].product_unit_price+"</td>";
-            resultToHtml+="<td>"+ results[Count].corp_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].product_status+"</td>";
-            resultToHtml+="<td>"+ results[Count].attribute1+"</td>";
-            resultToHtml+="<td>"+ results[Count].attribute2+"</td>";
-            resultToHtml+="<td>"+ results[Count].attribute3+"</td>";
-            resultToHtml+="<td>"+ results[Count].remark+"</td>";
+            resultToHtml+="<td>"+ results[Count].商品编号+"</td>";
+            resultToHtml+="<td>"+ results[Count].商品名称+"</td>";
+            resultToHtml+="<td>"+ results[Count].商品单价+"</td>";
+            resultToHtml+="<td>"+ results[Count].商户代码+"</td>";
+            resultToHtml+="<td>"+ results[Count].商品状态+"</td>";
+            resultToHtml+="<td>"+ results[Count].属性1+"</td>";
+            resultToHtml+="<td>"+ results[Count].属性2+"</td>";
+            resultToHtml+="<td>"+ results[Count].属性3+"</td>";
+            resultToHtml+="<td>"+ results[Count].备注+"</td>";
             resultToHtml+="</tr>";
             Count++;
         }
@@ -282,15 +284,15 @@ module.exports={
         while(results[Count]!=undefined)
         {   
             item=[]
-            item.push(results[Count].product_id);
-            item.push(results[Count].product_name);
-            item.push(results[Count].product_unit_price);
-            item.push(results[Count].corp_id);
-            item.push(results[Count].product_status);
-            item.push(results[Count].attribute1);
-            item.push(results[Count].attribute2);
-            item.push(results[Count].attribute3);
-            item.push(results[Count].remark);
+            item.push(results[Count].商品编号);
+            item.push(results[Count].商品名称);
+            item.push(results[Count].商品单价);
+            item.push(results[Count].商户代码);
+            item.push(results[Count].商品状态);
+            item.push(results[Count].属性1);
+            item.push(results[Count].属性2);
+            item.push(results[Count].属性3);
+            item.push(results[Count].备注);
             data.push(item);
             Count++;
         }
@@ -328,13 +330,13 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>"+ results[Count].bill_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].bill_amount+"</td>";
-            resultToHtml+="<td>"+ results[Count].creat_time+"</td>";
-            resultToHtml+="<td>"+ results[Count].stu_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].pay_status+"</td>";
-            resultToHtml+="<td>"+ results[Count].channel_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].bill_fail_reason+"</td>";
+            resultToHtml+="<td>"+ results[Count].订单编号+"</td>";
+            resultToHtml+="<td>"+ results[Count].交易金额+"</td>";
+            resultToHtml+="<td>"+ results[Count].创建时间+"</td>";
+            resultToHtml+="<td>"+ results[Count].学号+"</td>";
+            resultToHtml+="<td>"+ results[Count].订单支付状态+"</td>";
+            resultToHtml+="<td>"+ results[Count].支付渠道+"</td>";
+            resultToHtml+="<td>"+ results[Count].支付时间+"</td>";
             Count++;
         }
         resultToHtml+="</tbody>\
@@ -348,20 +350,20 @@ module.exports={
     },//SEND
 
     savaResultAsxlsxForPayOrderManager:function(results){
-        title=[ "订单号","订单总额","创建时间","学号","支付状态","失败原因"]
+        title=[ "订单号","订单总额","创建时间","学号","支付状态","失败原因","支付渠道"]
         data=[]
         data.push(title);
         var Count=0;
         while(results[Count]!=undefined)
         {   
             item=[]
-            item.push(results[Count].bill_id);
-            item.push(results[Count].bill_amount);
-            item.push(results[Count].creat_time);
-            item.push(results[Count].stu_id);
-            item.push(results[Count].pay_status);
-            item.push(results[Count].bill_fail_reason);
-            item.push(results[Count].channel_id);
+            item.push(results[Count].订单编号);
+            item.push(results[Count].交易金额);
+            item.push(results[Count].创建时间);
+            item.push(results[Count].学号);
+            item.push(results[Count].订单支付状态);
+            item.push(results[Count].支付失败原因);
+            item.push(results[Count].支付渠道);
             data.push(item);
             Count++;
         }
@@ -464,11 +466,11 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>"+ results[Count].stock_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].stock_amount+"</td>";
-            resultToHtml+="<td>"+ results[Count].corp_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].corp_name+"</td>";
-            resultToHtml+="<td>"+ results[Count].group_id+"</td>";
+            resultToHtml+="<td>"+ results[Count].采购编号+"</td>";
+            resultToHtml+="<td>"+ results[Count].金额+"</td>";
+            resultToHtml+="<td>"+ results[Count].供应商商户号+"</td>";
+            resultToHtml+="<td>"+ results[Count].供应商名称+"</td>";
+            resultToHtml+="<td>"+ results[Count].集团编号+"</td>";
             Count++;
         }
         resultToHtml+="</tbody>\
@@ -488,11 +490,11 @@ module.exports={
         while(results[Count]!=undefined)
         {   
             item=[]
-            item.push(results[Count].stock_id);
-            item.push(results[Count].stock_amount);
-            item.push(results[Count].corp_id);
-            item.push(results[Count].corp_name);
-            item.push(results[Count].group_id);
+            item.push(results[Count].采购编号);
+            item.push(results[Count].金额);
+            item.push(results[Count].供应商商户号);
+            item.push(results[Count].供应商名称);
+            item.push(results[Count].集团编号);
             data.push(item);
             Count++;
         }
@@ -531,14 +533,14 @@ module.exports={
         {   
             isGetInformation=true;
             resultToHtml+="<tr>";
-            resultToHtml+="<td>"+ results[Count].clear_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].stock_id+"</td>";
-            resultToHtml+="<td>"+ results[Count].deposit_amount+"</td>";
-            resultToHtml+="<td>"+ results[Count].deposit_status+"</td>";
-            resultToHtml+="<td>"+ results[Count].remain_amount+"</td>";
-            resultToHtml+="<td>"+ results[Count].remain_status+"</td>";
-            resultToHtml+="<td>"+ results[Count].deposit_paytime+"</td>";
-            resultToHtml+="<td>"+ results[Count].remain_paytime+"</td>";
+            resultToHtml+="<td>"+ results[Count].清算号+"</td>";
+            resultToHtml+="<td>"+ results[Count].采购编号+"</td>";
+            resultToHtml+="<td>"+ results[Count].定金金额+"</td>";
+            resultToHtml+="<td>"+ results[Count].定金状态+"</td>";
+            resultToHtml+="<td>"+ results[Count].尾款+"</td>";
+            resultToHtml+="<td>"+ results[Count].尾款状态+"</td>";
+            resultToHtml+="<td>"+ results[Count].定金支付时间+"</td>";
+            resultToHtml+="<td>"+ results[Count].尾款支付期限+"</td>";
             Count++;
         }
         resultToHtml+="</tbody>\
@@ -551,20 +553,21 @@ module.exports={
     },//SEND
 
     savaResultAsxlsxForClearManager:function(results){
-        title=[ "清算号","供货号","定金总额","定金状态","尾款状态","定金支付时间","尾款支付时间"]
+        title=[ "清算号","供货号","定金总额","定金状态","尾款总额","尾款状态","定金支付时间","尾款支付时间"]
         data=[]
         data.push(title);
         var Count=0;
         while(results[Count]!=undefined)
         {   
             item=[]
-            item.push(results[Count].clear_id);
-            item.push(results[Count].stock_id);
-            item.push(results[Count].deposit_amount);
-            item.push(results[Count].deposit_status);
-            item.push(results[Count].remain_amount);
-            item.push(results[Count].deposit_paytime);
-            item.push(results[Count].remain_paytime);
+            item.push(results[Count].清算号);
+            item.push(results[Count].采购编号);
+            item.push(results[Count].定金金额);
+            item.push(results[Count].定金状态);
+            item.push(results[Count].尾款);
+            item.push(results[Count].尾款状态);
+            item.push(results[Count].定金支付时间);
+            item.push(results[Count].尾款支付期限);
 
             data.push(item);
             Count++;
@@ -580,9 +583,5 @@ module.exports={
         })
 
     }
-
-    
-
-    
     
 }

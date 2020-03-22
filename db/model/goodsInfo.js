@@ -19,22 +19,22 @@ function consistSqlString(reqBody)
 {
       if(reqBody.goodsNumber!="")
       {
-            addSqlString("stock_id",reqBody.goodsNumber);
+            addSqlString("采购编号",reqBody.goodsNumber);
       }
 
       if(reqBody.groupNumber!="")
       {
-            addSqlString("group_id",reqBody.groupNumber);
+            addSqlString("集团编号",reqBody.groupNumber);
       }
 
       if(reqBody.supplierNumber!="")
       {
-            addSqlString("corp_id",reqBody.supplierNumber);
+            addSqlString("供应商商户号",reqBody.supplierNumber);
       }
 
       if(reqBody.supplierName!="")
       {
-            addSqlString("corp_name",reqBody.supplierName);
+            addSqlString("供应商名称",reqBody.supplierName);
       }
 
 
@@ -49,7 +49,7 @@ function queryGoodsInfo(reqBody,callback)
     consistSqlString(reqBody);
   
     console.log(sql_conditions);
-    connection.query("SELECT * from stock_list"+sql_conditions, function (error, results, fields) {
+    connection.query("SELECT * from 进货表"+sql_conditions, function (error, results, fields) {
           if (error) throw error;
           callback(results);
     });

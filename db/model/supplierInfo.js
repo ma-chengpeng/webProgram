@@ -19,27 +19,27 @@ function consistSqlString(reqBody)
 {
       if(reqBody.supplierNumber!="")
       {
-            addSqlString("corp_id",reqBody.supplierNumber);
+            addSqlString("商户代码",reqBody.supplierNumber);
       }
 
       if(reqBody.supplierName!="")
       {
-            addSqlString("corp_name",reqBody.supplierName);
+            addSqlString("商户名称",reqBody.supplierName);
       }
 
       if(reqBody.contactName!="")
       {
-            addSqlString("corp_account_contact1",reqBody.contactName);
+            addSqlString("商户对账联系人1",reqBody.contactName);
       }
       
       if (reqBody.supplierType!="")
       {
-            addSqlString("corp_type",reqBody.supplierType)
+            addSqlString("商户类型",reqBody.supplierType)
       }
 
       if (reqBody.groupNumber!="")
       {
-            addSqlString("group_id",reqBody.groupNumber)
+            addSqlString("集团编号",reqBody.groupNumber)
       }
 
 }
@@ -52,7 +52,7 @@ function querySupplierInfo(reqBody,callback)
 
     consistSqlString(reqBody);
   
-    connection.query("SELECT * from corp_info"+sql_conditions, function (error, results, fields) {
+    connection.query("SELECT * from 商户信息表"+sql_conditions, function (error, results, fields) {
           if (error) throw error;
           callback(results);
     });

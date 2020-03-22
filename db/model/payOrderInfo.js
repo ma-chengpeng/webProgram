@@ -19,21 +19,21 @@ function consistSqlString(reqBody)
 {
       if(reqBody.orderNumber!="")
       {
-            addSqlString("bill_id",reqBody.orderNumber);
+            addSqlString("订单编号",reqBody.orderNumber);
       }
 
       if(reqBody.createData!="")
       {
-            addSqlString("creat_time",reqBody.createData);
+            addSqlString("创建时间",reqBody.createData);
       }
 
       if(reqBody.studentNumber!="")
       {
-            addSqlString("stu_id",reqBody.studentNumber);
+            addSqlString("学号",reqBody.studentNumber);
       }
       if(reqBody.paymentStatus!="")
       {
-            addSqlString("pay_status",reqBody.paymentStatus);
+            addSqlString("订单支付状态",reqBody.paymentStatus);
       }
 }
 
@@ -46,7 +46,7 @@ function queryPayOrderInfo(reqBody,callback)
     consistSqlString(reqBody);
   
     console.log(sql_conditions);
-    connection.query("SELECT * from bill_info"+sql_conditions, function (error, results, fields) {
+    connection.query("SELECT * from 订单信息表"+sql_conditions, function (error, results, fields) {
           if (error) throw error;
           callback(results);
     });

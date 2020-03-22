@@ -19,31 +19,31 @@ function consistSqlString(reqBody)
 {
       if(reqBody.clearNumber!="")
       {
-            addSqlString("clear_id",reqBody.clearNumber);
+            addSqlString("清算号",reqBody.clearNumber);
       }
 
       if(reqBody.goodsNumber!="")
       {
-            addSqlString("stock_id",reqBody.goodsNumber);
+            addSqlString("采购编号",reqBody.goodsNumber);
       }
 
       if(reqBody.earnestStatus!="")
       {
-            addSqlString("deposit_status",reqBody.earnestStatus);
+            addSqlString("定金状态",reqBody.earnestStatus);
       }
 
       if(reqBody.finalPaymentStatus!="")
       {
-            addSqlString("remain_status",reqBody.finalPaymentStatus);
+            addSqlString("尾款状态",reqBody.finalPaymentStatus);
       }
 
       if(reqBody.finalPaymentData!="")
       {
-            addSqlString("remain_paytime",reqBody.finalPaymentData);
+            addSqlString("尾款支付期限",reqBody.finalPaymentData);
       }
       if(reqBody.earnestData!="")
       {
-            addSqlString("deposit_paytime",reqBody.earnestData);
+            addSqlString("定金支付时间",reqBody.earnestData);
       }
 }
 
@@ -56,7 +56,7 @@ function queryGoodsInfo(reqBody,callback)
     consistSqlString(reqBody);
   
     console.log(sql_conditions);
-    connection.query("SELECT * from clear_info"+sql_conditions, function (error, results, fields) {
+    connection.query("SELECT * from 清算表"+sql_conditions, function (error, results, fields) {
           if (error) throw error;
           callback(results);
     });

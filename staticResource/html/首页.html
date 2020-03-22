@@ -3,27 +3,118 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!---
 	<link rel="stylesheet" type="text/css" href="/staticResource/css/首页.css">
+	-->
+	<!-- 新 Bootstrap4 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+ 
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+ 
+	<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+	<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+ 
+	<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<style>
+		/* Make the image fully responsive */
+		.carousel-inner img {
+			width: 100%;
+			height: 100%;
+		}
+
+		.welcome
+		{
+			position:absolute;
+			display:block;
+			background :red;
+			top:0;
+			right:150px;
+		}
+
+		.logout
+		{
+			position:absolute;
+			display:block;
+			background :red;
+			top:0;
+			right:50px;
+		}
+		.lists
+		{
+			position:absolute;
+			display:block;
+			background :red;
+			top:115px;
+			left:0px;
+			z-index:999;
+		}
+	</style>
 </head>
 <body>
-	<div class="col-12">
-		<img class="header" src="/staticResource/images/首页/top_background.png" alt="图像加载失败">
-		<div class="welcome"><span>欢迎您！</span></div>
-		<div class="logout"><a href="/staticResource/html/index.html"><span>注销<span></a></div>
+	
+	<div class="row">
+		<div class= col-12">
+			<img  class="img-fluid"  style="width:100%;margin-bottom: -10px;height:125px" src="/staticResource/images/首页/top_background.png" alt="图像加载失败">
+			<div class="welcome"><span>欢迎您！</span></div>
+			<div class="logout"><a href="/staticResource/html/index.html"><span>注销<span></a></div>
+
+		</div>
 	</div>
-	<div class="col-12 middle">
-		<div class="list col-2">
-			<ul class="innerlist">
-				<li><a href="/staticResource/html/首页.html">首页</a></li>
-				<li><a href="/staticResource/html/学生信息管理.html">学生信息管理</a></li>
-				<li><a href="/staticResource/html/集团管理.html">集团管理</a></li>
-				<li><a href="/staticResource/html/供应商管理.html">供应商管理</a></li>
-				<li><a href="/staticResource/html/缴费项目管理.html">缴费项目管理</a></li>
-				<li><a href="/staticResource/html/缴费订单管理.html">缴费订单管理</a></li>
-				<li><a href="/staticResource/html/缴费记录管理.html">缴费记录管理</a></li>
-				<li><a href="/staticResource/html/供货管理.html">供货管理</a></li>
-				<li><a href="/staticResource/html/清算统计.html">清算统计</a></li>
+
+	<div class="row">
+		<nav class="navbar  bg-light lists col-2">
+			<ul class="navbar-nav nav-tabs">
+				<li class="nav-item text-center "><a class="nav-link" href="/staticResource/html/首页.html">首页</a></li>
+				<li class="nav-item text-center "><a class="nav-link" href="/staticResource/html/学生信息管理.html">学生信息管理</a></li>
+				<li class="nav-item text-center "><a class="nav-link" href="/staticResource/html/集团管理.html">集团管理</a></li>
+				<li class="nav-item text-center "><a class="nav-link" href="/staticResource/html/供应商管理.html">供应商管理</a></li>
+				<li class="nav-item text-center "><a class="nav-link" href="/staticResource/html/缴费项目管理.html">缴费项目管理</a></li>
+				<li class="nav-item text-center "><a class="nav-link" href="/staticResource/html/缴费订单管理.html">缴费订单管理</a></li>
+				<li class="nav-item text-center "><a class="nav-link" href="/staticResource/html/缴费记录管理.html">缴费记录管理</a></li>
+				<li class="nav-item text-center "><a class="nav-link" href="/staticResource/html/供货管理.html">供货管理</a></li>
+				<li class="nav-item text-center "><a class="nav-link" href="/staticResource/html/清算统计.html">清算统计</a></li>
+				<li class="nav-item text-center "><a class="nav-link" href="/staticResource/html/奖学金发放管理.html">奖学金发放管理</a></li>
 			</ul>
+		</nav>
+	</div>
+
+	<div class="row">
+		<div id="demo" class= "col-12 carousel slide" data-ride="carousel" >
+	
+			<!-- 指示符 -->
+			<ul class="carousel-indicators">
+			<li data-target="#demo" data-slide-to="0" class="active"></li>
+			<li data-target="#demo" data-slide-to="1"></li>
+			<li data-target="#demo" data-slide-to="2"></li>
+			</ul>
+		
+			<!-- 轮播图片 -->
+			<div class="carousel-inner">
+				<div class="carousel-item active" style="width:100%;height:500px">
+					<img src="/staticResource/images/首页/middle_background.jpg">
+				</div>
+				<div class="carousel-item" style="width:100%;height:500px">
+					<img src="https://static.runoob.com/images/mix/img_nature_wide.jpg">
+				</div>
+				<div class="carousel-item" style="width:100%;height:500px">
+					<img src="https://static.runoob.com/images/mix/img_mountains_wide.jpg">
+				</div>
+			</div>
+			
+			
+			
+			<!-- 左右切换按钮 -->
+			<!--
+			<a class="carousel-control-prev" href="#demo" data-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+			</a>
+			<a class="carousel-control-next" href="#demo" data-slide="next">
+			<span class="carousel-control-next-icon"></span>
+			</a>
+			-->
+		
 		</div>
 	</div>
 </body>
