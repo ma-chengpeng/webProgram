@@ -30,6 +30,9 @@ app.use('/goodsManager',goodsManager);
 const clearManager=require('./router/clearManager.js');
 app.use('/clearManager',clearManager);
 
+const scholarshipManager=require('./router/scholarshipManager.js');
+app.use('/scholarshipManager',scholarshipManager);
+
 app.get('/',function(req,res){
     res.sendFile(__dirname + "/staticResource/html/index.html")
 })

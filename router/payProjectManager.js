@@ -1,8 +1,8 @@
 const express = require('express');
-const getPayProjectQueryResult=require('../db/model/payProjectInfo.js')
+const getPayProjectQueryResult=require('../db/model/payProjectInfo.js');
 
-const updatePayProjectInfo=require('../db/updateModel/payProjectInfo.js')
-
+const updatePayProjectInfo=require('../db/updateModel/payProjectInfo.js');
+const  toggleStatus=require('../db/changeStatusModel/payProjectInfo.js');
 
 const bodyParser = require('body-parser'); 
 var urlEncodeParser = bodyParser.urlencoded({extended: false});
@@ -53,5 +53,12 @@ router.post('/fileUpload', function (req, res) {
     path=__dirname+"/exportFiles/";
     res.sendFile(path+"product_list.xlsx");
  })
+
+ router.post('/changeStatus',urlEncodeParser,function(req,res){
+    console.log(req.body.corpId);
+    toggleStatus(req.body.corpId,function(result){
+        res.send(result);
+    })
+})
 
 module.exports = router;

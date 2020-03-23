@@ -9,7 +9,8 @@ function toggleStatus(groupId,callback){
         else{
             status=1;
         }
-        connection.query("UPDATE 商户集团信息表 SET 状态 = '"+status +"' where 集团编号 = '"+ groupId +"' ")
+        connection.query("UPDATE 商户集团信息表 SET 状态 = '"+status +"' where 集团编号 = '"+ groupId +"' ");
+        connection.query("UPDATE 商户信息表 SET 状态 ='"+status+"' where 集团编号 = '"+groupId+"' ");
         callback(status.toString());
   });
 }

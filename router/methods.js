@@ -159,6 +159,7 @@ module.exports={
             <th>供应商地址</th>\
             <th>集团号</th>\
             <th>状态</th>\
+            <th>切换启用状态</th>\
             </tr>\
         </thead>\
         <tbody> \
@@ -181,7 +182,8 @@ module.exports={
             resultToHtml+="<td>"+ results[Count].商户类型+"</td>";
             resultToHtml+="<td>"+ results[Count].商户地址+"</td>";
             resultToHtml+="<td>"+ results[Count].集团编号+"</td>";
-            resultToHtml+="<td>"+ results[Count].状态+"</td>";
+            resultToHtml+="<td id='"+ results[Count].集团编号 +"'>"+ results[Count].状态+"</td>";
+            resultToHtml+="<td><button type= '"+ "button" +"' onclick= '"+ "changeStatus(this)" +"' value= '"+results[Count].集团编号+"' >切换</button></td>";
             resultToHtml+="</tr>";
             Count++;
         }
@@ -236,15 +238,16 @@ module.exports={
         " <table class='"+"inquire-content"+"'>\
         <thead>\
             <tr>\
-            <th>项目编号</th>\
-            <th>项目名</th>\
+            <th>商品编号</th>\
+            <th>商品名称</th>\
             <th>单价</th>\
-            <th>供应商号</th>\
-            <th>状态</th>\
+            <th>商户代码</th>\
+            <th>商品状态</th>\
             <th>属性一</th>\
             <th>属性二</th>\
             <th>属性三</th>\
             <th>备注</th>\
+            <th>切换商品状态</th>\
             </tr>\
         </thead>\
         <tbody> \
@@ -259,11 +262,12 @@ module.exports={
             resultToHtml+="<td>"+ results[Count].商品名称+"</td>";
             resultToHtml+="<td>"+ results[Count].商品单价+"</td>";
             resultToHtml+="<td>"+ results[Count].商户代码+"</td>";
-            resultToHtml+="<td>"+ results[Count].商品状态+"</td>";
+            resultToHtml+="<td id='"+ results[Count].商品编号+"'>"+ results[Count].商品状态+"</td>";
             resultToHtml+="<td>"+ results[Count].属性1+"</td>";
             resultToHtml+="<td>"+ results[Count].属性2+"</td>";
             resultToHtml+="<td>"+ results[Count].属性3+"</td>";
             resultToHtml+="<td>"+ results[Count].备注+"</td>";
+            resultToHtml+="<td><button type= '"+ "button" +"' onclick= '"+ "changeStatus(this)" +"' value= '"+results[Count].商品编号+"' >切换</button></td>";
             resultToHtml+="</tr>";
             Count++;
         }
@@ -582,6 +586,78 @@ module.exports={
             console.log('Write to excel has successed');
         })
 
-    }
+    },
+
+    sendResultForScholarshipManager: function(results,response){
+        var resultToHtml=
+        " <table class='"+"inquire-content"+"'>\
+        <thead>\
+            <tr>\
+            <th>发放编号</th></th>\
+            <th>学号</th>\
+            <th>奖学金类型</th>\
+            <th>名称</th>\
+            <th>等级</th>\
+            <th>金额</th>\
+            <th>资金发放时间</th>\
+            <th>发放渠道</th>\
+            </tr>\
+        </thead>\
+        <tbody> \
+        ";
+        var Count=0;
+        var isGetInformation=false;
+        while(results[Count]!=undefined)
+        {   
+            isGetInformation=true;
+            resultToHtml+="<tr>";
+            resultToHtml+="<td>"+ results[Count].发放编号+"</td>";
+            resultToHtml+="<td>"+ results[Count].学号+"</td>";
+            resultToHtml+="<td>"+ results[Count].奖学金类型+"</td>";
+            resultToHtml+="<td>"+ results[Count].名称+"</td>";
+            resultToHtml+="<td>"+ results[Count].等级+"</td>";
+            resultToHtml+="<td>"+ results[Count].金额+"</td>";
+            resultToHtml+="<td>"+ results[Count].资金发放时间+"</td>";
+            resultToHtml+="<td>"+ results[Count].发放渠道+"</td>";
+            Count++;
+        }
+        resultToHtml+="</tbody>\
+                    </table>";
+        if(isGetInformation==false)
+        {
+            resultToHtml="<h1 class='"+"test"+"'>未查询到相关信息</h1>"
+        }
+        response.send(resultToHtml);
+    },//SEND
     
+    saveResultAsxlsxForScholarshipManager:function(results){
+        title=[ "发放编号","学号","奖学金类型","名称","等级","金额","资金发放时间","发放渠道"]
+        data=[]
+        data.push(title);
+        var Count=0;
+        while(results[Count]!=undefined)
+        {   
+            item=[]
+            item.push(results[Count].发放编号);
+            item.push(results[Count].学号);
+            item.push(results[Count].奖学金类型);
+            item.push(results[Count].名称);
+            item.push(results[Count].等级);
+            item.push(results[Count].金额);
+            item.push(results[Count].资金发放时间);
+            item.push(results[Count].发放渠道);
+
+            data.push(item);
+            Count++;
+        }
+
+        let buffer = xlsx.build([
+            { name: "scholarship_Info", data: data }
+        ])
+     
+        fs.writeFile(__dirname + "/exportFiles/scholarship_info.xlsx", buffer, function (err) {
+            if (err) throw err;
+            console.log('Write to excel has successed');
+        })
+    }
 }
